@@ -4,6 +4,7 @@ import { useState } from 'react'
 export default function App() {
   const [start, setStart] = useState(false)
   const [titleLevel, setTitleLevel] = useState('')
+  const [limitNumber, setLimitNumber] = useState(0)
   const [chance, setChance] = useState(0)
   const [randomNumber, setRandomNumber] = useState(0)
   const [userGuess, setUserGuess] = useState('')
@@ -13,7 +14,7 @@ export default function App() {
   const level = {
     easy: {
       title: 'Easy',
-      number: 10,
+      number: 30,
       chance: 10,
     },
     normal: {
@@ -45,6 +46,7 @@ export default function App() {
     setRandomNumber(Math.floor(Math.random() * number + 1))
     setChance(chance)
     setTitleLevel(title)
+    setLimitNumber(number)
     setStart(true)
   }
 
@@ -98,8 +100,10 @@ export default function App() {
         </div>
       </div>
 
-      <div className="px-5 h-dvh flex flex-col gap-5 justify-center || xl:w-[30%] xl:mx-auto">
-        <h1 className="font-semibold">Difficulty : {titleLevel}</h1>
+      <div className={`px-5 h-dvh flex flex-col gap-5 justify-center || xl:w-[30%] xl:mx-auto ${start ? ' ' : 'hidden'}`}>
+        <h1 className="font-semibold flex flex-col gap-2">
+          Difficulty : {titleLevel} <span>Number : 1 - {limitNumber}</span>
+        </h1>
         <h1 className="text-center font-bold text-xl">How Much Am I ?</h1>
         {clue ? (
           <p className="text-center">
@@ -107,7 +111,7 @@ export default function App() {
           </p>
         ) : null}
 
-        <input onChange={handleUserGuess} type="number" value={userGuess} className="p-3 border border-slate-700 rounded-lg" disabled={correctAnswer}  />
+        <input onChange={handleUserGuess} type="number" value={userGuess} className="p-3 border border-slate-700 rounded-lg" disabled={correctAnswer} />
         <button onClick={handleGuess} className="text-white font-semibold rounded-lg p-3 bg-blue-700">
           Try To Guess
         </button>
