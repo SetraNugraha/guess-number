@@ -14,12 +14,12 @@ export default function App() {
   const level = {
     easy: {
       title: 'Easy',
-      number: 30,
+      number: 100,
       chance: 10,
     },
     normal: {
       title: 'Normal',
-      number: 100,
+      number: 550,
       chance: 6,
     },
     hard: {
