@@ -19,10 +19,16 @@ export default function App() {
       color: 'green',
     },
     {
+      level: 'Normal',
+      number: 500,
+      chance: 15,
+      color: 'blue',
+    },
+    {
       level: 'Hard',
       number: 1000,
       chance: 25,
-      color: 'yellow',
+      color: 'orange',
     },
     {
       level: 'Imposible',
@@ -40,7 +46,8 @@ export default function App() {
       <div className="flex flex-col w-[60%] mx-auto">
         <button
           onClick={handleLevel}
-          className={`text-white font-semibold px-5 py-2 ${color} rounded-lg flex flex-col justify-center items-center hover:opacity-70`}
+          className={`text-white font-semibold px-5 py-2 rounded-lg flex flex-col justify-center items-center hover:opacity-70 shadow-xl shadow-gray-400`}
+          style={{ backgroundColor: `${color}` }}
         >
           {title} <span> 1 - {number}</span> <span>{chance} Chance</span>
         </button>
@@ -98,7 +105,7 @@ export default function App() {
 
   return (
     <>
-      <div className={`h-dvh flex flex-col gap-10 justify-center bg-sky-200  ${start ? 'hidden' : ' '}`}>
+      <div className={`h-dvh flex flex-col gap-10 justify-center rounded-3xl  ${start ? 'hidden' : ' '}`}>
         <div>
           <h1 className="text-2xl text-center font-bold ">Guess The Number !</h1>
         </div>
@@ -109,7 +116,7 @@ export default function App() {
               <DifficultyButton
                 key={index}
                 title={item.level}
-                color={`bg-${item.color}-700`}
+                color={item.color}
                 chance={item.chance}
                 number={item.number}
                 handleStart={handleStart}
@@ -119,7 +126,7 @@ export default function App() {
         </div>
       </div>
 
-      <div className={`bg-sky-200 px-5 ${start ? ' ' : 'hidden'}`}>
+      <div className={` px-5 rounded-3xl ${start ? ' ' : 'hidden'}`}>
         <div className="h-dvh flex flex-col gap-5 justify-center">
           <button
             onClick={handleBack}
@@ -146,7 +153,7 @@ export default function App() {
           />
           <button
             onClick={handleGuess}
-            className="text-white font-semibold rounded-lg p-3 bg-blue-700 hover:opacity-70"
+            className="text-white font-semibold rounded-lg p-3 bg-blue-700 hover:opacity-70 shadow-xl shadow-gray-300"
           >
             Try To Guess
           </button>
