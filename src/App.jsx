@@ -19,12 +19,6 @@ export default function App() {
       color: 'green',
     },
     {
-      level: 'Normal',
-      number: 500,
-      chance: 15,
-      color: 'blue',
-    },
-    {
       level: 'Hard',
       number: 1000,
       chance: 25,
